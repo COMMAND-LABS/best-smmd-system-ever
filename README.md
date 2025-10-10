@@ -2,6 +2,8 @@
 
 Accompanying repo for the "Best Organic Social Media Marketing System Ever" YouTube video
 
+https://www.youtube.com/watch?v=h1ivwuU6SMY
+
 ## How to setup the system
 
 Check out `README.step_by_step_setup.md`
