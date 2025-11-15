@@ -69,8 +69,8 @@ The system is prompt based and is highly flexible to you needs. Below are 3 exam
 
 ### Demo_1 - peep `demo_1`
 
-How to post a Vertical video to YouTube, LinkedIn, Instagram, Facebook, TikTok, and X.com.
+How to post a vertical video to YouTube, LinkedIn, Instagram, Facebook, TikTok, and X.com.
 
 ### Demo_2 - peep `demo_2`
 
-### Demo_3 - peep `demo_3`
+How to post a promo image across multiple days
