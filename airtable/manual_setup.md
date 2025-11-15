@@ -1,9 +1,11 @@
 # TLDR
 
-Tips for implementing the Airtable Base. The answers are in the video too. You can copy what you see.
-    
+How to implement the Airtable Base in your account the manual way. This is designed to be customizable so adjust the table structure to meet your needs.
+
+## Manual Approach
+
 - Create 3 tables
-  - `Composition Prompts` Table
+  - `Compilation Prompts` Table
     - Prompt (Long text)
     - Post Type (Single select)
       - Image
@@ -33,9 +35,9 @@ Tips for implementing the Airtable Base. The answers are in the video too. You c
   - `Distribution Prompts` Table
     - Prompt (Long text)
     - Post Type (Single select)
-        - Image
-        - Video
-        - Text
-        - Image Carousel
+      - Image
+      - Video
+      - Text
+      - Image Carousel
     - Created Date (Date)
     - Note (Short text)

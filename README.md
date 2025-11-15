@@ -1,6 +1,8 @@
 # TLDR
 
-Accompanying repo for the "Best Organic Social Media Marketing System Ever" YouTube video
+Welcome to the "Best SMM Distribution System Ever"!
+
+SMM = Social Media Marketing
 
 https://www.youtube.com/watch?v=h1ivwuU6SMY
 
@@ -8,25 +10,36 @@ https://www.youtube.com/watch?v=h1ivwuU6SMY
 
 Check out `README.step_by_step_setup.md`
 
-## Diagrams
+## Overview Diagram
 
-Peep `diagrams/SMM_team_of_agents.png`
+Peep `diagrams/SMMD_agents.png`
 
-## Agent A Components (Composition Agent)
+## Compilation Agent components (PART A)
 
 - `Airtable` (https://airtable.com/)
 - `Dropbox` (https://www.dropbox.com/)
 - `n8n` (https://n8n.io/)
-- `OpenAI` (https://platform.openai.com/) or `Anthropic API` (https://console.anthropic.com/)
+- Whichever LLM provider you prefer (pick your poison)
+  - `OpenAI` (https://platform.openai.com/)
+  - `Anthropic API` (https://console.anthropic.com/)
+  - `Ollama` (https://ollama.com/)
+  - etc.
 
-## Agent B Components (Distribution Agent)
+## Distribution Agent components (PART B)
 
 - `Airtable` (https://airtable.com/)
 - `Dropbox` (https://www.dropbox.com/)
 - `Metricool` (https://metricool.com/)
-- `Claude for Desktop` (https://claude.ai/download)
+- Local MCP Client
+  - `Claude for Desktop` (https://claude.ai/download)
+  - `Cursor` (http://cursor.com/)
 
-## MCP
+## General MCP docs
 
 - https://docs.anthropic.com/en/docs/mcp
-- On Mac, you configure the MCP setup in the `~/Library/Application Support/Claude/claude_desktop_config.json` file
+- On Mac, configure MCP setup in the `~/Library/Application Support/Claude/claude_desktop_config.json` file
+- On Windows, configure MCP setup in the `%APPDATA%\Claude\claude_desktop_config.json` file
+
+# Shoutouts
+
+Inspired by Chris Larco
