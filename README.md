@@ -4,8 +4,6 @@ Welcome to the "Best SMM Distribution System Ever"!
 
 SMM = Social Media Marketing
 
-https://www.youtube.com/watch?v=h1ivwuU6SMY
-
 ## How to setup the system
 
 Check out `README.step_by_step_setup.md`
