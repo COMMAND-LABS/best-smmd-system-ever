@@ -1,0 +1,60 @@
+{
+  "type": "object",
+  "properties": {
+    "prompt": {
+      "type": "string"
+    },
+    "content_type": {
+      "type": "string",
+      "enum": [
+        "Image",
+        "Image Carousel",
+        "Text",
+        "Video"
+      ]
+    },
+    "ig_caption": {
+      "type": "string"
+    },
+    "linkedin_post": {
+      "type": "string"
+    },
+    "x_post": {
+      "type": "string"
+    },
+    "youtube_post": {
+      "type": "string"
+    },
+    "tiktok_post": {
+      "type": "string"
+    },
+    "facebook_post": {
+      "type": "string"
+    },
+    "link_to_media": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "filename": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "prompt",
+    "content_type",
+    "ig_caption",
+    "linkedin_post",
+    "x_post",
+    "youtube_post",
+    "tiktok_post",
+    "facebook_post",
+    "link_to_media"
+  ]
+}
