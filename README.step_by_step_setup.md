@@ -33,7 +33,7 @@ Here are the setup steps for how to get this SMMD system up and running.
 - Connect your LLM Provider
   - ie: Create an API key in the OpenAI Platform (https://platform.openai.com/)
     - Add the OpenAI API key to the OpenAI node in n8n
-- Set up the 3 Airtable tables (check out the `airtable/setup.md` doc for more info)
+- Set up the 3 Airtable tables (check out the `airtable/easy_setup.md` doc or the `airtable/manual_setup.md` for more info)
   - `Compilation Prompts`
   - `Content`
   - `Distribution Prompts`
