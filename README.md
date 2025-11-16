@@ -4,6 +4,14 @@ Welcome to the "Best SMM Distribution System Ever"!
 
 SMM = Social Media Marketing
 
+## Gist of how this system works after setup
+
+1. Compile Social Media Content
+2. Review (Human-in-the-Loop)
+3. Schedule
+4. Review (Human-in-the-Loop)
+5. Publish
+
 ## How to setup the system
 
 Check out `README.step_by_step_setup.md`
