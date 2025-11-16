@@ -41,7 +41,11 @@ Here are the setup steps for how to get this SMMD system up and running.
 ## 3. Prereqs for PART B
 
 - Download & Install Node.js (https://nodejs.org/en/download)
+  - Tested with Node.js v20
+  - Let us know what version works for you!
 - Download & Install uv (https://docs.astral.sh/uv/getting-started/installation/)
+  - Tested with Python 3.12.8 & uv version 0.5.18
+  - Let us know what version works for you!
 - Sign up to Metricool (https://metricool.com/)
   - We will need the `ADVANCED` plan as it gives you access to the Metricool API
 - Download Claude for Desktop (https://claude.ai/download)
