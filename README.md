@@ -40,4 +40,4 @@ Peep `diagrams/SMMD_agents.png`
 
 # Shoutouts
 
-Inspired by Chris Larco 🇭🇹
+Shoutout to Chris Larco 🇭🇹
