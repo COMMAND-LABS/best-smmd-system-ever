@@ -39,6 +39,7 @@ Peep `diagrams/SMMD_agents.png`
 - Local MCP Client
   - `Claude for Desktop` (https://claude.ai/download)
   - `Cursor` (http://cursor.com/)
+  - etc.
 
 ## General MCP docs
 
