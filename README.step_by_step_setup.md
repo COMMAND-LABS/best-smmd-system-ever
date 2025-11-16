@@ -67,10 +67,10 @@ Here are the setup steps for how to get this SMMD system up and running.
 
 The system is prompt based and is highly flexible to you needs. Below are 3 examples showing how to use the system.
 
-### Demo_1 - peep `demo_1`
+### Demo 1 - peep `demo_1`
 
 How to post a vertical video to YouTube, LinkedIn, Instagram, Facebook, TikTok, and X.com.
 
-### Demo_2 - peep `demo_2`
+### Demo 2 - peep `demo_2`
 
 How to post a promo image across multiple days
