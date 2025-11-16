@@ -57,10 +57,8 @@ Here are the setup steps for how to get this SMMD system up and running.
   - Windows: %APPDATA%\Claude\claude_desktop_config.json
 - Here are the MCP servers needed
   - Airtable
-    - https://glama.ai/mcp/servers/@domdomegg/airtable-mcp-server
-    - https://github.com/domdomegg/airtable-mcp-server
+    - https://github.com/felores/airtable-mcp
   - Metricool
-    - https://glama.ai/mcp/servers/@metricool/mcp-metricool
     - https://github.com/metricool/mcp-metricool
 
 ## 5. Example Prompts
