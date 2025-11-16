@@ -9,7 +9,7 @@ You will later loop over these posts and store them into Airtable.
 ## LINK TO EVENT PROMO IMAGE
 
 {
-"url": "https://www.dropbox.com/scl/fi/20fofdxacj6x9nxweixf8/NOV_20th_AI_MASTERCLASS_v2.png?rlkey=uu8hxx0jdcvvn30bnyzoeoo8t&st=ehfv4g7d&dl=1",
+"url": "<LINK_TO_YOUR_IMAGE_HERE>",
 }
 
 ## ABOUT THE IMAGE

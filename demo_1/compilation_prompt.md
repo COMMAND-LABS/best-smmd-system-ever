@@ -5,7 +5,7 @@ Write text to accompany a short form video clip to be posted to YouTube, LinkedI
 ## LINK TO CLIP
 
 {
-"url": "https://www.dropbox.com/scl/fi/p6c3spz52w1uvymzrpulh/10_29_CLIP_5_edited.mp4?rlkey=wo6gc8i8cnteco93s0p5cedlw&st=pztgef85&dl=1",
+"url": "<LINK_TO_YOUR_VERTICAL_VIDEO_HERE>",
 }
 
 ## ABOUT THE CLIP
