@@ -32,7 +32,7 @@ Event starts at 6pm EST and ends at 10pm EST sharp on 11/20/2025
 
 ## TODAY'S DATE
 
-11/13/2025 (we are ~7 days from the actual event)
+11/15/2025 (we are ~5 days from the actual event)
 
 ## OUTPUT SCHEMA
 
