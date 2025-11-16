@@ -1,5 +1,5 @@
 {
-  "name": "Composition Agent",
+  "name": "Campaign Compilation Agent",
   "nodes": [
     {
       "parameters": {
@@ -8,12 +8,12 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        -440,
-        -60
+        -320,
+        -176
       ],
-      "id": "05f58642-753d-4758-afaa-62a8f1906ffa",
+      "id": "2ac8c0e9-9e5b-4cc2-a8c1-f083f875218e",
       "name": "When chat message received",
-      "webhookId": "0762c001-d470-403c-b5ed-22d03d693691"
+      "webhookId": "2d3daee4-0720-482e-85ad-25cf5c3272fd"
     },
     {
       "parameters": {
@@ -23,10 +23,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.8,
       "position": [
-        -220,
-        -60
+        -96,
+        -176
       ],
-      "id": "955f034c-6574-4209-922a-201e2ecdbfd2",
+      "id": "f82f0d29-911b-427d-8e00-dff18faada8f",
       "name": "AI Agent"
     },
     {
@@ -42,17 +42,31 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -192,
-        160
+        -128,
+        48
       ],
-      "id": "1df5f1d4-9f9a-46ac-937f-dbcb1bbd553a",
+      "id": "2c9d8f66-6480-47a4-9070-07b04dc9d7a0",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
-          "id": "xZcQe7setUtfHrsn",
+          "id": "3Pi4ZntDXCnJXClE",
           "name": "OpenAi account"
         }
       }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"prompt\": {\n        \"type\": \"string\"\n      },\n      \"content_type\": {\n        \"type\": \"string\",\n        \"enum\": [\"Image\", \"Image Carousel\", \"Text\", \"Video\"]\n      },\n      \"ig_caption\": {\n        \"type\": \"string\"\n      },\n      \"linkedin_post\": {\n        \"type\": \"string\"\n      },\n      \"x_post\": {\n        \"type\": \"string\"\n      },\n      \"youtube_post\": {\n        \"type\": \"string\"\n      },\n      \"tiktok_post\": {\n        \"type\": \"string\"\n      },\n      \"facebook_post\": {\n        \"type\": \"string\"\n      },\n      \"link_to_media\": {\n        \"type\": \"array\",\n        \"items\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"url\": {\n              \"type\": \"string\"\n            },\n            \"filename\": {\n              \"type\": \"string\"\n            }\n          },\n          \"required\": [\"url\", \"filename\"]\n        }\n      },\n      \"creation_date\": {\n        \"type\": \"string\",\n        \"format\": \"date\"\n      },\n      \"distribution_date\": {\n        \"type\": \"string\",\n        \"format\": \"date\"\n      }\n    },\n    \"required\": [\n      \"prompt\",\n      \"content_type\",\n      \"ig_caption\",\n      \"linkedin_post\",\n      \"x_post\",\n      \"youtube_post\",\n      \"tiktok_post\",\n      \"facebook_post\",\n      \"link_to_media\",\n      \"creation_date\",\n      \"distribution_date\"\n    ]\n  }\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        80,
+        48
+      ],
+      "id": "bb591c55-2190-4d6d-9fbc-55787041db54",
+      "name": "Structured Output Parser"
     },
     {
       "parameters": {
@@ -61,14 +75,14 @@
           "__rl": true,
           "value": "apphOFikyofGAIOGS",
           "mode": "list",
-          "cachedResultName": "pre.dev content ideas",
+          "cachedResultName": "Command Labs Content Base",
           "cachedResultUrl": "https://airtable.com/apphOFikyofGAIOGS"
         },
         "table": {
           "__rl": true,
           "value": "tblvNUSOsHFhl3hOh",
           "mode": "list",
-          "cachedResultName": "Raw content ideas",
+          "cachedResultName": "Content",
           "cachedResultUrl": "https://airtable.com/apphOFikyofGAIOGS/tblvNUSOsHFhl3hOh"
         },
         "columns": {
@@ -76,14 +90,15 @@
           "value": {
             "Approved": false,
             "Prompt": "={{ $('When chat message received').item.json.chatInput }}",
-            "Instagram Caption": "={{ $json.output.ig_caption }}",
-            "LinkedIn Post": "={{ $json.output.linkedin_post }}",
-            "X.com Post": "={{ $json.output.x_post }}",
-            "YouTube Post": "={{ $json.output.youtube_post }}",
-            "TikTok Post": "={{ $json.output.tiktok_post }}",
-            "Post Type": "={{ $json.output.content_type }}",
-            "Facebook Post": "={{ $json.output.facebook_post }}",
-            "Media": "={{ $json.output.link_to_media }}"
+            "Post Type": "={{ $json.content_type }}",
+            "Instagram Caption": "={{ $json.ig_caption }}",
+            "LinkedIn Post": "={{ $json.linkedin_post }}",
+            "X.com Post": "={{ $json.x_post }}",
+            "Facebook Post": "={{ $json.facebook_post }}",
+            "YouTube Post": "={{ $json.youtube_post }}",
+            "TikTok Post": "={{ $json.tiktok_post }}",
+            "Media": "={{ $json.link_to_media }}",
+            "Distribution Date": "={{ $json.distribution_date }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -96,7 +111,7 @@
               "display": true,
               "type": "string",
               "readOnly": true,
-              "removed": false
+              "removed": true
             },
             {
               "id": "Prompt",
@@ -216,6 +231,17 @@
               "removed": false
             },
             {
+              "id": "Distribution Date",
+              "displayName": "Distribution Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
               "id": "Media",
               "displayName": "Media",
               "required": false,
@@ -246,10 +272,10 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        156,
-        -60
+        496,
+        -176
       ],
-      "id": "ef81a597-0989-45f0-a74c-162b3c973f33",
+      "id": "f5e6bb5e-db2e-4785-bc69-28f8c80a08ee",
       "name": "Airtable",
       "credentials": {
         "airtableTokenApi": {
@@ -260,17 +286,17 @@
     },
     {
       "parameters": {
-        "schemaType": "manual",
-        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"prompt\": {\n      \"type\": \"string\"\n    },\n    \"content_type\": {\n      \"type\": \"string\",\n      \"enum\": [\"Image\", \"Image Carousel\", \"Text\", \"Video\"]\n    },\n    \"ig_caption\": {\n      \"type\": \"string\"\n    },\n    \"linkedin_post\": {\n      \"type\": \"string\"\n    },\n    \"x_post\": {\n      \"type\": \"string\"\n    },\n    \"youtube_post\": {\n      \"type\": \"string\" \n    },\n    \"tiktok_post\": {\n      \"type\": \"string\"\n    },\n    \"facebook_post\": {\n      \"type\": \"string\"\n    },\n    \"link_to_media\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"url\": {\n            \"type\": \"string\"\n          },\n          \"filename\": {\n            \"type\": \"string\"\n          }\n        }\n      }\n    }\n  },\n  \"required\": [\n    \"prompt\",\n    \"content_type\",\n    \"ig_caption\",\n    \"linkedin_post\",\n    \"x_post\",\n    \"youtube_post\",\n    \"tiktok_post\",\n    \"facebook_post\",\n    \"link_to_media\"\n  ]\n}"
+        "fieldToSplitOut": "output",
+        "options": {}
       },
-      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
-      "typeVersion": 1.2,
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
       "position": [
-        -40,
-        160
+        288,
+        -176
       ],
-      "id": "075b1089-44a7-4bc4-b86c-ac8391ff613d",
-      "name": "Structured Output Parser"
+      "id": "e7080c6f-e8f7-439c-9351-56385ba8caf2",
+      "name": "Split Out"
     }
   ],
   "pinData": {},
@@ -280,6 +306,17 @@
         [
           {
             "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
             "type": "main",
             "index": 0
           }
@@ -297,17 +334,6 @@
         ]
       ]
     },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "Airtable",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Structured Output Parser": {
       "ai_outputParser": [
         [
@@ -318,17 +344,33 @@
           }
         ]
       ]
+    },
+    "Airtable": {
+      "main": [
+        []
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "88a95a5e-3355-4df0-8ac7-795575141312",
+  "versionId": "350827b6-3dd3-4b9b-b568-de738d40f070",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "59163ef64e1cf4dcd8e0818ffdc09c87dbd57c11199a791813b2ff3820cc01aa"
   },
-  "id": "z3ta1MDaqFbfxl3Z",
+  "id": "HdelcB28bkbBDxJs",
   "tags": []
 }

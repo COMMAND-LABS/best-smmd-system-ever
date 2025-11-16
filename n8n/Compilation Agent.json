@@ -1,5 +1,5 @@
 {
-  "name": "Campaign Composition Agent",
+  "name": "Compilation Agent",
   "nodes": [
     {
       "parameters": {
@@ -8,12 +8,12 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        -320,
-        -180
+        -448,
+        -64
       ],
-      "id": "2ac8c0e9-9e5b-4cc2-a8c1-f083f875218e",
+      "id": "05f58642-753d-4758-afaa-62a8f1906ffa",
       "name": "When chat message received",
-      "webhookId": "2d3daee4-0720-482e-85ad-25cf5c3272fd"
+      "webhookId": "0762c001-d470-403c-b5ed-22d03d693691"
     },
     {
       "parameters": {
@@ -23,105 +23,11 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.8,
       "position": [
-        52,
-        -180
+        -224,
+        -64
       ],
-      "id": "f82f0d29-911b-427d-8e00-dff18faada8f",
+      "id": "955f034c-6574-4209-922a-201e2ecdbfd2",
       "name": "AI Agent"
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "value": "gpt-4o",
-          "mode": "list",
-          "cachedResultName": "gpt-4o"
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        -100,
-        40
-      ],
-      "id": "2c9d8f66-6480-47a4-9070-07b04dc9d7a0",
-      "name": "OpenAI Chat Model",
-      "credentials": {
-        "openAiApi": {
-          "id": "xZcQe7setUtfHrsn",
-          "name": "OpenAi account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "base": {
-          "__rl": true,
-          "value": "apphOFikyofGAIOGS",
-          "mode": "list",
-          "cachedResultName": "Command Labs Content Base",
-          "cachedResultUrl": "https://airtable.com/apphOFikyofGAIOGS"
-        },
-        "table": {
-          "__rl": true,
-          "value": "tblvNUSOsHFhl3hOh",
-          "mode": "list",
-          "cachedResultName": "Content",
-          "cachedResultUrl": "https://airtable.com/apphOFikyofGAIOGS/tblvNUSOsHFhl3hOh"
-        },
-        "id": "={{ $fromAI('record_id') }}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.airtableTool",
-      "typeVersion": 2.1,
-      "position": [
-        140,
-        40
-      ],
-      "id": "b0138ede-6076-4131-832b-818c3f2c4bdb",
-      "name": "Airtable1",
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "dpE1KjadRxYqsvOT",
-          "name": "Jae"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "search",
-        "base": {
-          "__rl": true,
-          "value": "apphOFikyofGAIOGS",
-          "mode": "list",
-          "cachedResultName": "Command Labs Content Base",
-          "cachedResultUrl": "https://airtable.com/apphOFikyofGAIOGS"
-        },
-        "table": {
-          "__rl": true,
-          "value": "tblvNUSOsHFhl3hOh",
-          "mode": "list",
-          "cachedResultName": "Content",
-          "cachedResultUrl": "https://airtable.com/apphOFikyofGAIOGS/tblvNUSOsHFhl3hOh"
-        },
-        "returnAll": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Return_All', ``, 'boolean') }}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.airtableTool",
-      "typeVersion": 2.1,
-      "position": [
-        260,
-        40
-      ],
-      "id": "dddfa7b2-932a-4c2a-b509-eccdeaf996bc",
-      "name": "Airtable",
-      "credentials": {
-        "airtableTokenApi": {
-          "id": "dpE1KjadRxYqsvOT",
-          "name": "Jae"
-        }
-      }
     },
     {
       "parameters": {
@@ -144,14 +50,15 @@
           "mappingMode": "defineBelow",
           "value": {
             "Approved": false,
-            "Instagram Caption": "={{ $fromAI('instagram_caption') }}",
-            "X.com Post": "={{ $fromAI('x_dot_com_post') }}",
-            "LinkedIn Post": "={{ $fromAI('linkedin_post') }}",
-            "YouTube Post": "={{ $fromAI('youtube_post') }}",
-            "TikTok Post": "={{ $fromAI('tiktok_post') }}",
-            "Media": "={{ $json.output.link_to_media }}",
-            "Facebook Post": "={{ $fromAI('facebook_post') }}",
-            "Distribution Date": "={{ $fromAI('distribution_date') }}"
+            "Prompt": "={{ $('When chat message received').item.json.chatInput }}",
+            "Instagram Caption": "={{ $json.output.ig_caption }}",
+            "LinkedIn Post": "={{ $json.output.linkedin_post }}",
+            "X.com Post": "={{ $json.output.x_post }}",
+            "YouTube Post": "={{ $json.output.youtube_post }}",
+            "TikTok Post": "={{ $json.output.tiktok_post }}",
+            "Post Type": "={{ $json.output.content_type }}",
+            "Facebook Post": "={{ $json.output.facebook_post }}",
+            "Media": "={{ $json.output.link_to_media }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -164,7 +71,18 @@
               "display": true,
               "type": "string",
               "readOnly": true,
-              "removed": true
+              "removed": false
+            },
+            {
+              "id": "Prompt",
+              "displayName": "Prompt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
             },
             {
               "id": "Post Type",
@@ -304,17 +222,6 @@
               "type": "boolean",
               "readOnly": false,
               "removed": false
-            },
-            {
-              "id": "Prompt",
-              "displayName": "Prompt",
-              "required": false,
-              "defaultMatch": false,
-              "canBeUsedToMatch": true,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -322,18 +229,57 @@
         },
         "options": {}
       },
-      "type": "n8n-nodes-base.airtableTool",
+      "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
       "position": [
-        380,
-        40
+        160,
+        -64
       ],
-      "id": "1b473a3a-de8f-45a7-a3ab-835cd2a18a0b",
-      "name": "Airtable2",
+      "id": "ef81a597-0989-45f0-a74c-162b3c973f33",
+      "name": "Airtable",
       "credentials": {
         "airtableTokenApi": {
-          "id": "dpE1KjadRxYqsvOT",
-          "name": "Jae"
+          "id": "DTrOscx6cEqEjUTI",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"prompt\": {\n      \"type\": \"string\"\n    },\n    \"content_type\": {\n      \"type\": \"string\",\n      \"enum\": [\"Image\", \"Image Carousel\", \"Text\", \"Video\"]\n    },\n    \"ig_caption\": {\n      \"type\": \"string\"\n    },\n    \"linkedin_post\": {\n      \"type\": \"string\"\n    },\n    \"x_post\": {\n      \"type\": \"string\"\n    },\n    \"youtube_post\": {\n      \"type\": \"string\" \n    },\n    \"tiktok_post\": {\n      \"type\": \"string\"\n    },\n    \"facebook_post\": {\n      \"type\": \"string\"\n    },\n    \"link_to_media\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"url\": {\n            \"type\": \"string\"\n          },\n          \"filename\": {\n            \"type\": \"string\"\n          }\n        }\n      }\n    }\n  },\n  \"required\": [\n    \"prompt\",\n    \"content_type\",\n    \"ig_caption\",\n    \"linkedin_post\",\n    \"x_post\",\n    \"youtube_post\",\n    \"tiktok_post\",\n    \"facebook_post\",\n    \"link_to_media\"\n  ]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        -48,
+        160
+      ],
+      "id": "075b1089-44a7-4bc4-b86c-ac8391ff613d",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "claude-sonnet-4-20250514",
+          "cachedResultName": "Claude 4 Sonnet"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        -288,
+        144
+      ],
+      "id": "c59f4042-fbd2-4acf-b95b-3e729aaeecf3",
+      "name": "Anthropic Chat Model",
+      "credentials": {
+        "anthropicApi": {
+          "id": "molYjkydhlF4Gr0Z",
+          "name": "AI School Phase 3"
         }
       }
     }
@@ -353,48 +299,32 @@
     },
     "AI Agent": {
       "main": [
-        []
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
-    "OpenAI Chat Model": {
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model": {
       "ai_languageModel": [
         [
           {
             "node": "AI Agent",
             "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Airtable1": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Airtable": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Airtable2": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -405,11 +335,11 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "5e3e4692-0edb-4cb4-865b-94dfaf19a213",
+  "versionId": "5544e590-f0a0-4855-b3f0-bfea928213e1",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "59163ef64e1cf4dcd8e0818ffdc09c87dbd57c11199a791813b2ff3820cc01aa"
   },
-  "id": "HdelcB28bkbBDxJs",
+  "id": "z3ta1MDaqFbfxl3Z",
   "tags": []
 }
