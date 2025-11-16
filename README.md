@@ -16,7 +16,7 @@ SMM = Social Media Marketing
 
 Check out `README.step_by_step_setup.md`
 
-## Overview Diagram
+## System Diagram
 
 Peep `diagrams/SMMD_agents.png`
 
