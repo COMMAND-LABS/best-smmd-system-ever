@@ -43,7 +43,7 @@ Here are the setup steps for how to get this SMMD system up and running.
 - Download & Install Node.js (https://nodejs.org/en/download)
 - Download & Install uv (https://docs.astral.sh/uv/getting-started/installation/)
 - Sign up to Metricool (https://metricool.com/)
-  - We will need the `ADVANCED` plan is it gives you access to the Metricool API
+  - We will need the `ADVANCED` plan as it gives you access to the Metricool API
 - Download Claude for Desktop (https://claude.ai/download)
 
 ## 4. Setting up the "Distribution" Agent (PART B)
