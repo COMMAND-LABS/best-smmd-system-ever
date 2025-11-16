@@ -65,7 +65,7 @@ Here are the setup steps for how to get this SMMD system up and running.
 
 ## 5. Example Prompts
 
-The system is prompt based and is highly flexible to you needs. Below are 3 examples showing how to use the system.
+This system is prompt based and is highly flexible to your needs. Below are 2 examples showing how to use the system.
 
 ### Demo 1 - peep `demo_1`
 
